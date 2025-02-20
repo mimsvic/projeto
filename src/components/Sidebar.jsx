@@ -3,17 +3,21 @@ import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineCancel } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import { links } from '../data/dummy';
+import { links } from '../data/dummy';  // Certifique-se de que links contém o campo 'label'
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
-  const { currentColor, activeMenu, setActiveMenu, screenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, screenSize, currentMode } = useStateContext();
 
   const handleCloseSideBar = () => {
     if (activeMenu !== undefined && screenSize <= 900) {
       setActiveMenu(false);
     }
   };
+
+  // Definindo as imagens da logo para os modos claro e escuro
+  const logoLight = 'logo.png';  // Caminho da logo para o modo claro
+  const logoDark = '/Group 12 (1).png';   // Caminho da logo para o modo escuro
 
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
@@ -24,7 +28,8 @@ const Sidebar = () => {
         <>
           <div className="flex justify-between items-center">
             <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
-              <img src="/logo.png" alt="Logo" />
+              {/* Aqui, mudamos a logo com base no currentMode */}
+              <img src={currentMode === 'Dark' ? logoDark : logoLight} alt="Logo" />
             </Link>
 
             <TooltipComponent content="Menu" position="BottomCenter">
@@ -38,7 +43,8 @@ const Sidebar = () => {
               </button>
             </TooltipComponent>
           </div>
-          <div className="mt-10 ">
+
+          <div className="mt-10">
             {links.map((item) => (
               <div key={item.title}>
                 <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase">
@@ -55,7 +61,7 @@ const Sidebar = () => {
                     className={({ isActive }) => (isActive ? activeLink : normalLink)}
                   >
                     {link.icon}
-                    <span className="capitalize ">{link.name}</span>
+                    <span className="capitalize">{link.label || link.name}</span> {/* Usa o label, se disponível */}
                   </NavLink>
                 ))}
               </div>
