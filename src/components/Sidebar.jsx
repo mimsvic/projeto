@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineCancel } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import { links } from '../data/dummy';  // Certifique-se de que links contém o campo 'label'
+import { links } from '../data/dummy';// Certifique-se de que links contém o campo 'label'
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
@@ -16,8 +16,8 @@ const Sidebar = () => {
   };
 
   // Definindo as imagens da logo para os modos claro e escuro
-  const logoLight = 'logo.png';  // Caminho da logo para o modo claro
-  const logoDark = '/Group 12 (1).png';   // Caminho da logo para o modo escuro
+  const logoLight = 'logo.png'; // Caminho da logo para o modo claro
+  const logoDark = '/Group 12 (1).png'; // Caminho da logo para o modo escuro
 
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';

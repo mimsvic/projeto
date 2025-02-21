@@ -1,13 +1,5 @@
 import React, { useEffect } from 'react';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { FiShoppingCart } from 'react-icons/fi';
-import { BsChatLeft } from 'react-icons/bs';
-import { RiNotification3Line } from 'react-icons/ri';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-
-import avatar from '../data/avatar.jpg';
-import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
@@ -28,7 +20,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
+  const { activeMenu, setActiveMenu, handleClick, setScreenSize, screenSize, currentMode } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -53,7 +45,6 @@ const Navbar = () => {
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       {/* Restante do conteúdo */}
-      
       <div className="flex flex-grow justify-end"> {/* Alinhando à direita */}
         <div
           className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
@@ -61,7 +52,7 @@ const Navbar = () => {
         >
           <img
             className="rounded-full h-20 w-auto" // Ajustado para imagem menor e proporcional
-            src="/bosch.png"
+            src={currentMode === 'Light' ? '/bosch.png' : '/bosch 1.png'}
             alt="Bosch"
           />
         </div>
