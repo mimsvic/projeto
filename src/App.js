@@ -1,99 +1,61 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { useEffect } from "react";
+import { useTheme } from "./contexts/ContextProvider";
 
-import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Ecommerce, Orders, Calendar, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorMapping, Editor } from './pages';
-import './App.css';
-
-import { useStateContext } from './contexts/ContextProvider';
-
-const App = () => {
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+export default function App() {
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
-    if (currentThemeColor && currentThemeMode) {
-      setCurrentColor(currentThemeColor);
-      setCurrentMode(currentThemeMode);
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
-  }, []);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
-    <div className={currentMode === 'Dark' ? 'dark' : ''}>
-      <BrowserRouter>
-        <div className="flex relative dark:bg-main-dark-bg">
-          <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
-            <TooltipComponent
-              content="Settings"
-              position="Top"
-            >
-              <button
-                type="button"
-                onClick={() => setThemeSettings(true)}
-                style={{ background: currentColor, borderRadius: '50%' }}
-                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
-              >
-                <FiSettings />
+    <div className="bg-white font-poppins">
+      {/* Cabeçalho */}
+      <header className="w-full py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
+          <img src="/logo.png" alt="Logo" className="h-8 ml-0" /> {/* Logo mais à esquerda */}
+          <nav className="flex-1 flex justify-center space-x-6"> {/* Centralizando a navegação */}
+            <a href="#powerbi" className="text-gray-900 hover:text-green-600">Power BI</a>
+            <a href="#tutorial" className="text-gray-900 hover:text-green-600">Tutorial</a>
+            <a href="#funcionalidades" className="text-gray-900 hover:text-green-600">Funcionalidades</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Conteúdo Principal */}
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 gap-8 p-8">
+          <div className="flex flex-col justify-center mt-0"> {/* Diminuindo a margem superior */}
+            <h1 className="text-5xl font-bold text-gray-900">
+              Atomatize Suas Finanças Com Inteligência.
+            </h1>
+            <p className="mt-6 text-gray-700 text-lg leading-relaxed">
+              Junte-se ao <span className="text-green-600 font-semibold">finit</span> e tenha sempre a 
+              <span className="text-yellow-500 font-semibold"> visibilidade clara </span> que você precisa.
+              Vamos automatizar o futuro das finanças!
+            </p>
+            <div className="mt-6 flex space-x-6">
+              <button className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
+                Use o Power BI
               </button>
-
-            </TooltipComponent>
+              <button className="bg-gray-300 text-gray-900 px-6 py-3 rounded-lg hover:bg-gray-400">
+                Conheça Mais
+              </button>
+            </div>
           </div>
-          {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
-              <Sidebar />
-            </div>
-          ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">
-              <Sidebar />
-            </div>
-          )}
-          <div
-            className={
-              activeMenu
-                ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
-                : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
-            }
-          >
-            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-              <Navbar />
-            </div>
-            <div>
-              {themeSettings && (<ThemeSettings />)}
-
-              <Routes>
-                {/* dashboard  */}
-                <Route path="/" element={(<Ecommerce />)} />
-                <Route path="/ecommerce" element={(<Ecommerce />)} />
-
-                {/* pages  */}
-                <Route path="/customers" element={<Customers />} />
-
-                {/* apps  */}
-                <Route path="/kanban" element={<Kanban />} />
-                <Route path="/editor" element={<Editor />} />
-                <Route path="/calendar" element={<Calendar />} />
-
-                {/* charts  */}
-                <Route path="/line" element={<Line />} />
-                <Route path="/area" element={<Area />} />
-                <Route path="/bar" element={<Bar />} />
-                <Route path="/pie" element={<Pie />} />
-                <Route path="/financial" element={<Financial />} />
-                <Route path="/color-mapping" element={<ColorMapping />} />
-                <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked />} />
-
-              </Routes>
-            </div>
-            <Footer />
+          <div className="flex items-center justify-center">
+          <img 
+              src="mockup.png" 
+              alt="Laptop com gráficos" 
+              className="w-100 h-auto object-contain" /> {/* Imagem com largura 100% */}
           </div>
         </div>
-      </BrowserRouter>
+      </div>
     </div>
   );
-};
-
-export default App;
+}
