@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { RxSwitch } from 'react-icons/rx';
 import { useTheme } from './contexts/ContextProvider';
 
 export default function App() {
@@ -31,9 +32,13 @@ export default function App() {
   return (
     <div className="bg-white dark:bg-black text-gray-900 dark:text-white font-poppins">
       {/* Cabeçalho */}
-      <header className="w-full py-4 fixed top-0 left-0 bg-white dark:bg-black -900 z-50">
+      <header className="w-full py-4 fixed top-0 left-0 bg-white dark:bg-black z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
-          <img src="/logo.png" alt="Logo Finit" className="h-8" />
+          <img
+            src={theme === 'dark' ? '/logo 2.png' : '/logo.png'}
+            alt="Logo Finit"
+            className="h-8"
+          />
           <nav className="flex space-x-6">
             <a
               href="#powerbi"
@@ -56,59 +61,71 @@ export default function App() {
               Tutorial
             </a>
           </nav>
-          {/* Botão para alternar entre os temas */}
-          <button onClick={toggleTheme} className="text-gray-900 dark:text-white">
-            {theme === 'dark' ? 'Modo Claro' : 'Modo Escuro'}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="text-gray-900 dark:text-white scale-x-100 dark:-scale-x-100"
+          >
+            <RxSwitch className="h-8 w-8" />
           </button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <div className="h-screen flex items-center justify-between max-w-7xl mx-auto px-6 mt-16">
+      <div className="h-screen flex items-center justify-between max-w-7xl mx-auto px-0 mt-0">
         <div className="w-1/2">
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-            Automatize Suas Finanças Com Inteligência.
+          <h1 className="text-5xl font-bold text-gray-900 dark:text-white leading-snug mb-4">
+            Automatize suas <br /> finanças com <br /> inteligência.
           </h1>
-          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
+          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 mb-6">
             Junte-se ao <span className="text-green-600 font-semibold">finit</span> e tenha sempre a
             <span className="text-yellow-500 font-semibold"> visibilidade clara </span> que você precisa.
             Vamos automatizar o futuro das finanças!
           </p>
           <div className="mt-6 flex space-x-6">
-            <button className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
+            <button type="button" className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
               Use o Power BI
             </button>
             <button
-              className="bg-gray-300 text-gray-900 dark:bg-gray-600 dark:text-white px-6 py-3 rounded-lg hover:bg-gray-400"
+              type="button"
+              className="bg-[#CACACA] text-gray-900 dark:bg-gray-600 dark:text-white px-6 py-3 rounded-lg hover:bg-gray-400"
               onClick={handleShowFuncionalidades}
             >
               Conheça Mais
             </button>
           </div>
         </div>
-        <div className="w-1/2 flex justify-center">
-          <img src="/notebook.png" alt="Laptop com gráficos" className="w-[550px] h-auto object-contain" />
+
+        {/* Imagem do notebook, ajustada para ser maior e mais à direita */}
+        <div className="w-[90%] flex justify-end">
+          <img
+            src="/notebook.png"
+            alt="Laptop com gráficos"
+            className="w-[100%] scale-125 h-auto object-contain" // Imagem ainda maior
+          />
         </div>
       </div>
 
       {/* Power BI Section */}
-      <div
-        id="powerbi"
-        className="flex justify-center py-12 border-8 border-white rounded-lg shadow-md max-w-7xl mx-auto mt-16"
-      >
-        <div className="w-full text-center">
-          <iframe
-            title="Power BI Report"
-            src="https://app.powerbi.com/view?r=eyJrIjoiYjcxYjVjOTUtMjJmYi00MjBhLTg1ZmMtMzg4YmY0NzQwMjk5IiwidCI6ImNmZjAyMjMwLTM1MTgtNGY2NS1hMTZjLTBmOGJmNjI2MGRmOCJ9"
-            width="700"
-            height="500"
-            frameBorder="0"
-            className="mx-auto"
-          ></iframe>
-          <div className="mt-6">
-            <button className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
-              Entrar
-            </button>
+      <div id="powerbi" className="flex justify-center py-12">
+        <div className="bg-gray-300 p-6 rounded-lg shadow-lg w-[850px] h-[550px] flex flex-col items-center">
+          <div className="w-full bg-gray-400 h-10 rounded-t-lg flex items-center pl-4 text-white text-lg font-semibold">
+            Power BI
+          </div>
+          <div className="bg-white w-full h-full flex flex-col items-center justify-center p-6 rounded-b-lg">
+            <iframe
+              title="Power BI Report"
+              src="https://app.powerbi.com/view?r=eyJrIjoiYjcxYjVjOTUtMjJmYi00MjBhLTg1ZmMtMzg4YmY0NzQwMjk5IiwidCI6ImNmZjAyMjMwLTM1MTgtNGY2NS1hMTZjLTBmOGJmNjI2MGRmOCJ9"
+              width="100%"
+              height="350px"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+            <div className="mt-4">
+              <button type="button" className="bg-green-700 text-white px-6 py-2 rounded-md hover:bg-green-800">
+                Entrar
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -126,9 +143,9 @@ export default function App() {
               <div key={index} className="flex flex-col items-center">
                 <div className="w-64 p-4 bg-[#3FD195] rounded-lg shadow-md flex flex-col items-center">
                   <div className="h-36 w-full flex items-center justify-center">
-                    {index === 1 ? (
+                    {index === 1 && (
                       <img src="/Group 14.png" alt="Dashboard" className="h-full object-contain" />
-                    ) : null}
+                    )}
                   </div>
                 </div>
                 <p className="text-gray-800 dark:text-gray-300 text-sm mt-2 w-64">
