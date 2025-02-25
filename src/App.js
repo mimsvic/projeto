@@ -30,9 +30,9 @@ export default function App() {
   };
 
   return (
-    <div className="bg-white dark:bg-black text-gray-900 dark:text-white font-poppins">
-      {/* Cabeçalho */}
-      <header className="w-full py-4 fixed top-0 left-0 bg-white dark:bg-black z-50">
+    <div className="bg-white dark:bg-black text-gray-900 dark:text-white font-poppins min-h-screen">
+      {/* Corrigindo o cabeçalho */}
+      <header className="w-full py-4 fixed top-0 left-0 bg-white dark:bg-black z-50 border-none shadow-none">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
           <img
             src={theme === 'dark' ? '/logo 2.png' : '/logo.png'}
@@ -72,44 +72,36 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <div className="h-screen flex items-center justify-between max-w-7xl mx-auto px-0 mt-0">
+      <div className="h-screen flex items-center justify-between max-w-7xl mx-auto px-8 pt-20">
         <div className="w-1/2">
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white leading-snug mb-4">
+          <h1 className="text-6xl font-bold leading-snug mb-6">
             Automatize suas <br /> finanças com <br /> inteligência.
           </h1>
-          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 mb-6">
+          <p className="mt-6 text-2xl mb-8">
             Junte-se ao <span className="text-green-600 font-semibold">finit</span> e tenha sempre a
             <span className="text-yellow-500 font-semibold"> visibilidade clara </span> que você precisa.
-            Vamos automatizar o futuro das finanças!
           </p>
-          <div className="mt-6 flex space-x-6">
-            <button type="button" className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
+          <div className="flex space-x-8">
+            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-xl hover:bg-green-600">
               Use o Power BI
             </button>
             <button
-              type="button"
-              className="bg-[#CACACA] text-gray-900 dark:bg-gray-600 dark:text-white px-6 py-3 rounded-lg hover:bg-gray-400"
+              className="bg-gray-400 text-gray-900 dark:bg-gray-600 dark:text-white px-8 py-4 rounded-lg text-xl hover:bg-gray-500"
               onClick={handleShowFuncionalidades}
             >
               Conheça Mais
             </button>
           </div>
         </div>
-
-        {/* Imagem do notebook, ajustada para ser maior e mais à direita */}
-        <div className="w-[90%] flex justify-end">
-          <img
-            src="/notebook.png"
-            alt="Laptop com gráficos"
-            className="w-[100%] scale-125 h-auto object-contain" // Imagem ainda maior
-          />
+        <div className="w-[60%] flex justify-end">
+          <img src="/notebook.png" alt="Laptop" className="w-[110%] scale-150 object-contain" />
         </div>
       </div>
 
       {/* Power BI Section */}
       <div id="powerbi" className="flex justify-center py-12">
         <div className="bg-gray-300 p-6 rounded-lg shadow-lg w-[850px] h-[550px] flex flex-col items-center">
-          <div className="w-full bg-gray-400 h-10 rounded-t-lg flex items-center pl-4 text-white text-lg font-semibold">
+          <div className="w-full h-10 rounded-t-lg flex items-center pl-4 text-white text-lg font-semibold">
             Power BI
           </div>
           <div className="bg-white w-full h-full flex flex-col items-center justify-center p-6 rounded-b-lg">
@@ -132,26 +124,18 @@ export default function App() {
 
       {/* Funcionalidades */}
       {showFuncionalidades && (
-        <div id="funcionalidades" className="text-center py-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white">Funcionalidades do Finit</h2>
-          <p className="mt-4 text-[#696969] dark:text-gray-400 text-lg">
-            Junte-se ao finit e tenha sempre a visibilidade clara que você precisa.
-            Vamos automatizar o futuro das finanças!
-          </p>
-          <div className="flex justify-center gap-8 mt-8">
-            {[1, 2, 3].map((_, index) => (
+        <div id="funcionalidades" className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black py-12">
+          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">Funcionalidades do Finit</h2>
+          <p className="text-lg text-gray-600 font-bold dark:text-gray-300 text-center max-w-2xl mb-12">A finit usa o Power BI para automatizar a comparação de planilhas e tornar esse processo mais eficiente.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-6xl">
+            {['icon.png', 'icon 2.png', 'icon 3.png'].map((icon, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="w-64 p-4 bg-[#3FD195] rounded-lg shadow-md flex flex-col items-center">
-                  <div className="h-36 w-full flex items-center justify-center">
-                    {index === 1 && (
-                      <img src="/Group 14.png" alt="Dashboard" className="h-full object-contain" />
-                    )}
-                  </div>
+                <div className="w-80 h-56 bg-[#3FD195] rounded-lg shadow-md flex items-center justify-center">
+                  <img src={`/${icon}`} alt={`Funcionalidade ${index + 1}`} className="h-40 object-contain" />
                 </div>
-                <p className="text-gray-800 dark:text-gray-300 text-sm mt-2 w-64">
-                  Junte-se ao finit e tenha sempre a visibilidade clara que você precisa.
-                  Vamos automatizar o futuro das finanças!
-                </p>
+                <h3 className="font-bold text-lg mt-4 text-center text-gray-900 dark:text-white">Funcionalidade {index + 1}</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm text-center mt-2 w-80">Junte-se ao finit e tenha sempre a visibilidade clara que você precisa. Vamos automatizar o futuro das finanças!</p>
               </div>
             ))}
           </div>
