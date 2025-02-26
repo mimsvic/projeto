@@ -55,10 +55,10 @@ export default function App() {
               Funcionalidades
             </a>
             <a
-              href="#tutorial"
+              href="#time"
               className="text-gray-900 dark:text-white hover:text-green-600"
             >
-              Tutorial
+              Time
             </a>
           </nav>
           <button
@@ -124,22 +124,24 @@ export default function App() {
 
       {/* Funcionalidades */}
       {showFuncionalidades && (
-        <div id="funcionalidades" className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black py-12">
-          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">Funcionalidades do Finit</h2>
-          <p className="text-lg text-gray-600 font-bold dark:text-gray-300 text-center max-w-2xl mb-12">A finit usa o Power BI para automatizar a comparação de planilhas e tornar esse processo mais eficiente.</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-6xl">
-            {['icon.png', 'icon 2.png', 'icon 3.png'].map((icon, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="w-80 h-56 bg-[#3FD195] rounded-lg shadow-md flex items-center justify-center">
-                  <img src={`/${icon}`} alt={`Funcionalidade ${index + 1}`} className="h-40 object-contain" />
-                </div>
-                <h3 className="font-bold text-lg mt-4 text-center text-gray-900 dark:text-white">Funcionalidade {index + 1}</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm text-center mt-2 w-80">Junte-se ao finit e tenha sempre a visibilidade clara que você precisa. Vamos automatizar o futuro das finanças!</p>
+      <div id="funcionalidades" className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black py-12">
+        <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">Funcionalidades do Finit</h2>
+        <p className="text-lg text-gray-600 font-bold dark:text-gray-300 text-center max-w-2xl mb-12">A finit usa o Power BI para automatizar a comparação de planilhas e tornar esse processo mais eficiente.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-6xl">
+          {['icon.png', 'icon 2.png', 'icon 3.png'].map((icon, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div className="w-80 h-56 bg-[#3FD195] rounded-lg shadow-md flex items-center justify-center">
+                <img src={`/${icon}`} alt={`Funcionalidade ${index + 1}`} className="h-40 object-contain" />
               </div>
-            ))}
-          </div>
+              <h3 className="font-bold text-lg mt-4 text-center text-gray-900 dark:text-white">
+                {index === 0 && "Automatização de comparação de planilhas"}
+                {index === 1 && "Visualização Clara dos Dados"}
+                {index === 2 && "Resultados de forma mensal"}
+              </h3>
+            </div>
+          ))}
         </div>
+      </div>
       )}
     </div>
   );
