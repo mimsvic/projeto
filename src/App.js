@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div className="bg-white dark:bg-black text-gray-900 dark:text-white font-poppins min-h-screen">
-      {/* Corrigindo o cabeçalho */}
+      {/* Cabeçalho */}
       <header className="w-full py-4 fixed top-0 left-0 bg-white dark:bg-black z-50 border-none shadow-none">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
           <img
@@ -124,25 +124,38 @@ export default function App() {
 
       {/* Funcionalidades */}
       {showFuncionalidades && (
-      <div id="funcionalidades" className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black py-12">
-        <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">Funcionalidades do Finit</h2>
-        <p className="text-lg text-gray-600 font-bold dark:text-gray-300 text-center max-w-2xl mb-12">A finit usa o Power BI para automatizar a comparação de planilhas e tornar esse processo mais eficiente.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-6xl">
-          {['icon.png', 'icon 2.png', 'icon 3.png'].map((icon, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="w-80 h-56 bg-[#3FD195] rounded-lg shadow-md flex items-center justify-center">
-                <img src={`/${icon}`} alt={`Funcionalidade ${index + 1}`} className="h-40 object-contain" />
+        <div id="funcionalidades" className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black py-12 mb-0">
+          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">Funcionalidades do Finit</h2>
+          <p className="text-lg text-gray-600 font-bold dark:text-gray-300 text-center max-w-2xl mb-0">
+            A finit usa o Power BI para automatizar a comparação de planilhas e tornar esse processo mais eficiente.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-6xl">
+            {['icon.png', 'icon 2.png', 'icon 3.png'].map((icon, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="w-80 h-56 bg-[#3FD195] rounded-lg shadow-md flex items-center justify-center">
+                  <img src={`/${icon}`} alt={`Funcionalidade ${index + 1}`} className="h-40 object-contain" />
+                </div>
+                <h3 className="font-bold text-lg mt-4 text-center text-gray-900 dark:text-white">
+                  {index === 0 && "Automatização de comparação de planilhas"}
+                  {index === 1 && "Visualização Clara dos Dados"}
+                  {index === 2 && "Resultados de forma mensal"}
+                </h3>
               </div>
-              <h3 className="font-bold text-lg mt-4 text-center text-gray-900 dark:text-white">
-                {index === 0 && "Automatização de comparação de planilhas"}
-                {index === 1 && "Visualização Clara dos Dados"}
-                {index === 2 && "Resultados de forma mensal"}
-              </h3>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Seção Time */}
+      <div id="time" className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black py-12 mt-0">
+        <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Time</h3>
+        <p className="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mb-8">
+          Nosso time é formado por especialistas apaixonados por transformar dados em soluções poderosas e eficazes para você.
+        </p>
+        <div className="w-96 h-64 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
+          <img src="/time.png" alt="Time" className="w-full h-full object-cover rounded-lg" />
         </div>
       </div>
-      )}
     </div>
   );
 }
