@@ -106,8 +106,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Imagem grande no desktop, sem espaço extra no mobile */}
-        <div className="hidden md:flex w-full md:w-1/2 justify-end items-center">
+        {/* Imagem grande no desktop, com margem superior */}
+        <div className="hidden md:flex w-full md:w-1/2 justify-end items-center ml-10">
           <img
             src="/notebook.png"
             alt="Laptop"
@@ -187,7 +187,7 @@ export default function App() {
       <div className="w-full flex" style={{ height: '5px' }}>
         <div className="flex-1 bg-green-600" />
         <div className="flex-1 bg-yellow-500" />
-        <div className="flex-1 bg-white-400" />
+        <div className="flex-1 bg-gray-400" />
       </div>
 
     </div>
