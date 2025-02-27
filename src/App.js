@@ -78,31 +78,31 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row items-center justify-start h-auto md:h-screen max-w-7xl mx-auto px-8 pt-6 md:pt-10">
+      <div className="flex flex-col md:flex-row items-center justify-start h-auto md:h-screen max-w-7xl mx-auto px-8 pt-20 md:pt-10">
         <div className="w-full md:w-1/2 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-bold leading-snug mb-6">
-            Automatize suas <br /> finanças com <br /> inteligência.
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-snug mb-6 text-center">
+            Automatize suas <br className="sm:hidden" /> finanças com <br /> inteligência.
           </h1>
+
           <p className="mt-6 text-lg md:text-2xl mb-8">
             Junte-se ao <span className="text-green-600 font-semibold">finit</span> e tenha sempre a{' '}
             <span className="text-yellow-500 font-semibold">visibilidade clara</span> que você precisa.
           </p>
           <div className="w-full flex flex-row space-x-8">
             <button
-              type="button" // Garantindo que o botão não submeta um formulário
+              type="button"
               onClick={() => scrollToSection('powerbi')}
               className="flex-1 flex items-center justify-center bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 h-[60px] rounded-lg text-lg md:text-xl hover:bg-green-700"
             >
               Use o Power BI
             </button>
             <button
-              type="button" // Garantindo que o botão não submeta um formulário
+              type="button"
               onClick={() => scrollToSection('funcionalidades')}
               className="flex-1 flex items-center justify-center bg-gray-400 text-gray-900 dark:bg-gray-600 dark:text-white px-6 md:px-8 py-3 md:py-4 h-[60px] rounded-lg text-lg md:text-xl hover:bg-gray-500"
             >
               Conheça Mais
             </button>
-
           </div>
         </div>
 
@@ -139,6 +139,7 @@ export default function App() {
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center sm:text-3xl">
           Funcionalidades do Finit
         </h2>
+
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mb-12">
           A finit usa o Power BI para automatizar a comparação de planilhas e tornar esse processo mais eficiente.
         </p>
