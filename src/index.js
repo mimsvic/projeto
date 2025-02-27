@@ -8,5 +8,5 @@ ReactDOM.render(
   <ThemeProvider> {/* Envolvendo o App com ThemeProvider */}
     <App />
   </ThemeProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
