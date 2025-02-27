@@ -78,7 +78,7 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <div className="h-screen flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-8 pt-20">
+      <div className="flex flex-col md:flex-row items-center justify-start h-auto md:h-screen max-w-7xl mx-auto px-8 pt-6 md:pt-10">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h1 className="text-4xl md:text-6xl font-bold leading-snug mb-6">
             Automatize suas <br /> finanças com <br /> inteligência.
@@ -89,24 +89,30 @@ export default function App() {
           </p>
           <div className="w-full flex flex-row space-x-8">
             <button
-              type="button"
+              type="button" // Garantindo que o botão não submeta um formulário
+              onClick={() => scrollToSection('powerbi')}
               className="flex-1 flex items-center justify-center bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 h-[60px] rounded-lg text-lg md:text-xl hover:bg-green-700"
             >
               Use o Power BI
             </button>
-
             <button
-              type="button"
+              type="button" // Garantindo que o botão não submeta um formulário
+              onClick={() => scrollToSection('funcionalidades')}
               className="flex-1 flex items-center justify-center bg-gray-400 text-gray-900 dark:bg-gray-600 dark:text-white px-6 md:px-8 py-3 md:py-4 h-[60px] rounded-lg text-lg md:text-xl hover:bg-gray-500"
             >
               Conheça Mais
             </button>
 
           </div>
-
         </div>
-        <div className="hidden md:block w-full md:w-1/2 flex justify-end">
-          <img src="/notebook.png" alt="Laptop" className="w-[110%] scale-150 object-contain" />
+
+        {/* Imagem grande no desktop, sem espaço extra no mobile */}
+        <div className="hidden md:flex w-full md:w-1/2 justify-end items-center">
+          <img
+            src="/notebook.png"
+            alt="Laptop"
+            className="w-[110%] md:scale-150 object-contain"
+          />
         </div>
       </div>
 
@@ -121,13 +127,6 @@ export default function App() {
               src="https://app.powerbi.com/view?r=eyJrIjoiOGZmODdmZjctOWZjMy00MzdjLWE1NWEtMjE1MWU5ZTcyODNiIiwidCI6ImIxMDUxYzRiLTNiOTQtNDFhYi05NDQxLWU3M2E3MjM0MmZkZCJ9"
               allowFullScreen
             />
-            <button
-              type="button"
-              className="mt-4 bg-green-700 text-white px-6 py-2 rounded-md hover:bg-green-700"
-            >
-              Entrar
-            </button>
-
           </div>
         </div>
       </div>
@@ -137,7 +136,9 @@ export default function App() {
         id="funcionalidades"
         className="flex flex-col items-center bg-white dark:bg-black py-12 mb-16"
       >
-        <h2 className="text-4xl font-bold mb-6">Funcionalidades do Finit</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center sm:text-3xl">
+          Funcionalidades do Finit
+        </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mb-12">
           A finit usa o Power BI para automatizar a comparação de planilhas e tornar esse processo mais eficiente.
         </p>
