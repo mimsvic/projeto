@@ -78,9 +78,9 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row items-center justify-start h-auto md:h-screen max-w-7xl mx-auto px-8 pt-20 md:pt-10">
+      <div className="flex flex-col md:flex-row items-center justify-start h-auto md:h-screen max-w-7xl mx-auto px-8 pt-20 md:pt-0 md:px-8 md:pt-10">
         <div className="w-full md:w-1/2 text-center md:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-snug mb-6 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-snug mb-6 text-center md:text-left">
             Automatize suas <br className="sm:hidden" /> finanças com <br /> inteligência.
           </h1>
 
@@ -115,7 +115,6 @@ export default function App() {
           />
         </div>
       </div>
-
       {/* Power BI Section */}
       <div id="powerbi" className="flex justify-center py-12 px-4 mt-20">
         <div className="bg-gray-300 p-6 rounded-lg shadow-lg w-full max-w-3xl flex flex-col items-center">
